@@ -1,6 +1,6 @@
 "use strict";
 
-app.factory("ItemStorage", ($q, $http, FirebaseURL) => {
+app.factory("ItemStorage", ($q, $http, FirebaseURL, $location) => {
     
     let getItemList = function(){
         let items = [];
@@ -47,6 +47,19 @@ app.factory("ItemStorage", ($q, $http, FirebaseURL) => {
             });
         });
     };
+    
+    let updateItem = (newItem) => {
+        return $q( (resolve, reject) => {
+            $http.post(`${FirebaseURL}/items.json`, 
+                JSON.stringify(newItem))
+                .success((objFromFirebase) => {
+                    resolve(objFromFirebase);
+                })
+                .error((error) => {
+                    reject(error);
+                });
+        });
+    };
 
-    return {getItemList, postNewItem, deleteItem};
+  return {getItemList, postNewItem, deleteItem};
 });

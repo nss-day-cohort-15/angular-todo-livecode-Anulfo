@@ -17,4 +17,8 @@ app.controller("ItemListCtrl", function($scope, ItemStorage, SearchTermData) {
             });
         });
     };
+
+    // $scope.itemEdit = (itemId) => {
+    //     ItemStorage.editItem(itemId);
+    // };
 });
