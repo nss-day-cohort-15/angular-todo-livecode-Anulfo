@@ -3,7 +3,7 @@
             <div class="form-group">
               <label>Task Description</label>
               <!-- TODO: Hook up this form to our JS for submitting -->
-              <input type="text" class="form-control" placeholder="{{selectedItem.task}}" ng-model="newTask.task" />
+              <input type="text" class="form-control" placeholder="{{selectedItem.task}}" ng-model="editedTask.task" />
             </div>
             <div class="form-group">
               <label>Due Date</label>
@@ -11,19 +11,19 @@
             </div>
             <div class="form-group">
               <label>Assigned To</label>
-              <input type="text" class="form-control" placeholder="{{selectedItem.assignTo}}" ng-model="newTask.assignTo"/>
+              <input type="text" class="form-control" placeholder="{{selectedItem.assignTo}}" ng-model="editedTask.assignTo"/>
             </div>
             <div class="form-group">
               <label>Location</label>
-              <input type="text" class="form-control" placeholder="{{selectedItem.location}}" ng-model="newTask.Location"/>
+              <input type="text" class="form-control" placeholder="{{selectedItem.location}}" ng-model="editedTask.Location"/>
             </div>
             <div class="form-group">
               <label>Urgency</label>
-              <input type="text" class="form-control" placeholder="{{selectedItem.urgency}}" ng-model="newTask.urgency"/>
+              <input type="text" class="form-control" placeholder="{{selectedItem.urgency}}" ng-model="editedTask.urgency"/>
             </div>
             <div class="form-group">
               <label>Dependencies</label>
-              <input type="text" class="form-control" placeholder="{{selectedItem.dependencies}}" ng-model="newTask.dependencies"/>
+              <input type="text" class="form-control" placeholder="{{selectedItem.dependencies}}" ng-model="editedTask.dependencies"/>
             </div>
             <!-- TODO: bind this button to a function -->
             <button class="btn btn-default" ng-click="addEditedItem()">Submit</button>

@@ -48,10 +48,10 @@ app.factory("ItemStorage", ($q, $http, FirebaseURL, $location) => {
         });
     };
     
-    let updateItem = (newItem) => {
+    let updateItem = (updatedItem) => {
         return $q( (resolve, reject) => {
-            $http.post(`${FirebaseURL}/items.json`, 
-                JSON.stringify(newItem))
+            $http.patch(`${FirebaseURL}/items.json`, 
+                JSON.stringify(updatedItem))
                 .success((objFromFirebase) => {
                     resolve(objFromFirebase);
                 })
@@ -61,5 +61,5 @@ app.factory("ItemStorage", ($q, $http, FirebaseURL, $location) => {
         });
     };
 
-  return {getItemList, postNewItem, deleteItem};
+  return {getItemList, postNewItem, deleteItem, updateItem};
 });

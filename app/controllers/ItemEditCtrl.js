@@ -2,7 +2,7 @@
 
 app.controller("ItemEditCtrl", function( $scope, ItemStorage, $routeParams, $location){
     $scope.items = [];
-    $scope.newTask = {
+    $scope.editedTask = {
         assignedTo: "",
         dependencies: "",
         dueDate: "",
@@ -21,5 +21,11 @@ app.controller("ItemEditCtrl", function( $scope, ItemStorage, $routeParams, $loc
         })[0];
         console.log($scope.selectedItem);
     });
-    // .then( ItemStorage.updateItem)
+
+    $scope.addEditedItem = function () {
+        ItemStorage.updateItem($scope.editedTask)
+        .then(function () {
+            $location.url("/items/list");
+        });
+    };
 });
