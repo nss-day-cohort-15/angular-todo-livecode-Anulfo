@@ -3,6 +3,15 @@
 var app = angular.module("TodoApp", ["ngRoute"])
 .constant("FirebaseURL", "https://fridays-project-53a9f.firebaseio.com");
 
+let isAuth = (AuthFactory) => new Promise( (resolve,reject) => {
+    if (AuthFactory.isAuthenticated()) {
+        resolve();
+    }else {
+        console.log("Not Authenticated user. Go Away");
+        reject();
+    }
+});
+
 app.config(function($routeProvider){
     $routeProvider.
         when('/', {
@@ -15,19 +24,23 @@ app.config(function($routeProvider){
         }).
         when('/items/list', {
             templateUrl: 'partials/item-list.html',
-            controller: 'ItemListCtrl'
+            controller: 'ItemListCtrl',
+            resolve: {isAuth}
         }).
         when('/items/new', {
             templateUrl:'partials/item-form.html',
-            controller: 'ItemNewCtrl'
+            controller: 'ItemNewCtrl',
+            resolve: {isAuth}
         }).
         when("/items/view/:itemId", {
             templateUrl: "partials/item-details.html",
-            controller: "ItemViewCtrl"
+            controller: "ItemViewCtrl",
+            resolve: {isAuth}
         }).
         when("/items/edit/:itemId", {
-             templateUrl: "partials/item-edit.html",
-            controller: "ItemEditCtrl"
+             templateUrl: "partials/item-form.html",
+            controller: "ItemEditCtrl",
+            resolve: {isAuth}
         }).
         otherwise('/');
 });

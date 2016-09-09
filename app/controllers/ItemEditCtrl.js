@@ -1,30 +1,18 @@
 "use strict";
 
 app.controller("ItemEditCtrl", function( $scope, ItemStorage, $routeParams, $location){
-    $scope.items = [];
-    $scope.editedTask = {
-        assignedTo: "",
-        dependencies: "",
-        dueDate: "",
-        location: "",
-        task: "",
-        urgency: "normal" 
-    };
+    $scope.title = "Edit Item";
+    $scope.btnText = "Update";
+    $scope.newTask = {};
 
-    ItemStorage.getItemList()
-    .then( (itemCollectionArr) => {
-      
-        $scope.items = itemCollectionArr;
-
-        $scope.selectedItem = $scope.items.filter(function (item) {
-            return item.id === $routeParams.itemId;
-        })[0];
-        console.log($scope.selectedItem);
+    ItemStorage.getSingleItem ($routeParams.itemId)
+    .then( (response) => {
+        $scope.newTask = response;
     });
 
-    $scope.addEditedItem = function () {
-        ItemStorage.updateItem($scope.editedTask)
-        .then(function () {
+    $scope.addNewItem = () => {
+        ItemStorage.updateItem($routeParams.itemId, $scope.newTask)
+        .then ( (response) => {
             $location.url("/items/list");
         });
     };
