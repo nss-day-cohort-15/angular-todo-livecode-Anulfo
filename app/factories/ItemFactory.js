@@ -7,7 +7,7 @@ app.factory("ItemStorage", ($q, $http, FirebaseURL, $location) => {
         //This is the Angular way of doing promises
         return $q((resolve, reject)=>{
           $http.get(`${FirebaseURL}/items.json?orderBy="uid"&equalTo="${user}"`)
-          //Angular does the parsing of the object for you, just like AJAX or getJSON
+          //Angular does the parsing of the object  for you, just like AJAX or getJSON
           .success((itemObject) => {
               Object.keys(itemObject).forEach((key) => {
                 itemObject[key].id = key;
