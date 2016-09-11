@@ -1,0 +1,41 @@
+<h1>Edit Todo</h1>
+          <form>
+            <div class="form-group">
+              <label>Task Description</label>
+              <!-- TODO: Hook up this form to our JS for submitting -->
+              <input type="text" class="form-control" placeholder="{{selectedItem.task}}" ng-model="editedTask.task" />
+            </div>
+            <div class="form-group">
+              <label>Due Date</label>
+              <input type="text" class="form-control" placeholder="{{selectedItem.dueDate}}" ng-model="newTask.dueDate"/>
+            </div>
+            <div class="form-group">
+              <label>Assigned To</label>
+              <input type="text" class="form-control" placeholder="{{selectedItem.assignTo}}" ng-model="editedTask.assignTo"/>
+            </div>
+            <div class="form-group">
+              <label>Location</label>
+              <input type="text" class="form-control" placeholder="{{selectedItem.location}}" ng-model="editedTask.Location"/>
+            </div>
+            <div class="form-group">
+              <label>Urgency</label>
+              <input type="text" class="form-control" placeholder="{{selectedItem.urgency}}" ng-model="editedTask.urgency"/>
+            </div>
+            <div class="form-group">
+              <label>Dependencies</label>
+              <input type="text" class="form-control" placeholder="{{selectedItem.dependencies}}" ng-model="editedTask.dependencies"/>
+            </div>
+            <!-- TODO: bind this button to a function -->
+            <button class="btn btn-default" ng-click="addEditedItem()">Submit</button>
+          </form>
+
+<!-- <h1>Item Edit</h1>
+
+<h2>Assigned To: <input type="text" placeholder="{{selectedItem.assignTo}}"></h2>
+<h2>Due Date: <input type="text" placeholder="{{selectedItem.dueDate}}"></h2>
+<h2>Dependencies: <input type="text" placeholder="{{selectedItem.dependencies}}"></h2>
+<h2>Location: <input type="text" placeholder="{{selectedItem.location}}"></h2>
+<h2>Urgency: <input type="text" placeholder="{{selectedItem.urgency}}"></h2>
+<h2>Completed?: <input type="text" placeholder="yes or no"></h2>
+
+<button ng-click="pushEditedItem">Submit</button> -->
